@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FileUploadService } from '../../services/file-upload.service'; // Import the FileUploadService
 
 @Component({
   selector: 'app-file-upload',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class FileUploadComponent implements OnInit {
   selectedFile: File | null = null;
 
-  constructor() { }
+  constructor(private fileUploadService: FileUploadService) { } // Inject the FileUploadService
 
   ngOnInit(): void {
   }
@@ -20,9 +21,19 @@ export class FileUploadComponent implements OnInit {
 
   onUpload(): void {
     if (this.selectedFile) {
-      // Implement file upload logic here, e.g., using an HTTP service
-      // You can send the selected file to the server for ingestion
-      console.log('Uploading file:', this.selectedFile);
+      // Use the FileUploadService to upload the selected file
+      this.fileUploadService.uploadFile(this.selectedFile)
+        .subscribe(
+          response => {
+            // Handle the response from the service (e.g., success message or further actions)
+            console.log('File uploaded successfully:', response);
+          },
+          error => {
+            // Handle errors, if any
+            console.error('File upload error:', error);
+          }
+        );
+
       // Reset the selected file
       this.selectedFile = null;
     } else {
@@ -31,4 +42,3 @@ export class FileUploadComponent implements OnInit {
     }
   }
 }
-
