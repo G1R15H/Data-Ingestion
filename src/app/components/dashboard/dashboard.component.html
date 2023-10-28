@@ -1,0 +1,28 @@
+<div class="dashboard">
+    <h1>Data Ingestion Dashboard</h1>
+
+    <div *ngIf="ingestedFiles.length > 0; else noFiles">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>File Name</th>
+                    <th>Uploaded Date/Time</th>
+                    <th>Status</th>
+                    <th>Ingested Date/Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let file of ingestedFiles">
+                    <td>{{ file.fileName }}</td>
+                    <td>{{ file.uploadedDateTime }}</td>
+                    <td>{{ file.status }}</td>
+                    <td>{{ file.ingestedDateTime }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <ng-template #noFiles>
+        <p>No files have been ingested yet.</p>
+    </ng-template>
+</div>

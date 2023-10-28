@@ -1,0 +1,33 @@
+/* Styling for the File Upload Component */
+.file-upload {
+  text-align: center;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+input[type="file"] {
+    color: rgb(44, 44, 160);
+    border: dotted rgb(153, 153, 248);
+    padding: 10px 10px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

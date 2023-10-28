@@ -1,0 +1,5 @@
+<div class="file-upload">
+    <h2>Upload Data File</h2>
+    <input type="file" (change)="onFileSelected($event)" accept=".csv, .xml, .json, .fhir">
+    <button (click)="onUpload()" [disabled]="!selectedFile">Upload</button>
+</div>
