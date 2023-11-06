@@ -1,22 +1,26 @@
 <div class="dashboard">
     <h1>Data Ingestion Dashboard</h1>
 
-    <div *ngIf="ingestedFiles.length > 0; else noFiles">
+    <div *ngIf="files.length > 0; else noFiles">
         <table class="table">
             <thead>
                 <tr>
+                    <th>File ID</th>
                     <th>File Name</th>
                     <th>Uploaded Date/Time</th>
                     <th>Status</th>
                     <th>Ingested Date/Time</th>
+                    <th>Error Message</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let file of ingestedFiles">
-                    <td>{{ file.fileName }}</td>
-                    <td>{{ file.uploadedDateTime }}</td>
+                <tr *ngFor="let file of files">
+                    <td>{{ file.fileId }}</td>
+                    <td>{{ file.file_name }}</td>
+                    <td>{{ file.uploaded_date_time }}</td>
                     <td>{{ file.status }}</td>
-                    <td>{{ file.ingestedDateTime }}</td>
+                    <td>{{ file.ingested_date_time }}</td>
+                    <td>{{ file.error_message }}</td>
                 </tr>
             </tbody>
         </table>

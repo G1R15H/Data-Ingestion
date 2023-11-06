@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IngestedDataService } from 'src/app/service/ingested-data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-file-upload',
@@ -7,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileUploadComponent implements OnInit {
   selectedFile: File | null = null;
-
-  constructor() { }
+  categoryId!: number;
+  constructor(private ingestedDataService: IngestedDataService) { }
 
   ngOnInit(): void {
   }
@@ -18,17 +20,20 @@ export class FileUploadComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
 
-  onUpload(): void {
+  onUpload(categoryId: number): void {
     if (this.selectedFile) {
-      // Implement file upload logic here, e.g., using an HTTP service
-      // You can send the selected file to the server for ingestion
-      console.log('Uploading file:', this.selectedFile);
-      // Reset the selected file
-      this.selectedFile = null;
+      // Call the file upload service
+      this.ingestedDataService.uploadFile(this.selectedFile, categoryId)
+        .subscribe((response: string) => {
+          console.log('File upload response:', response);
+          // Reset the selected file
+          this.selectedFile = null;
+        }, (error) => {
+          console.error('File upload error:', error);
+        });
     } else {
       // Handle no file selected error
       console.error('No file selected for upload.');
     }
   }
 }
-
