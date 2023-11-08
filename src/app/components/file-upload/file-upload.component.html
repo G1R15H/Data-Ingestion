@@ -1,7 +1,9 @@
 <div class="file-upload">
     <h2>Upload Data File</h2>
     <input type="file" (change)="onFileSelected($event)" accept=".csv, .xml, .json, .fhir">
+    <br>
     <input type="number" placeholder="Category ID" [(ngModel)]="categoryId">
+    <br><br>
     <button (click)="onUpload(categoryId)" [disabled]="!selectedFile">Upload</button>
   </div>
   

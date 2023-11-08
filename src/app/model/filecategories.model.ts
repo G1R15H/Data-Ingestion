@@ -1,5 +1,4 @@
 export class Filecategories {
-    // Define the properties for the Filecategories model
     id: number;
     validation: string;
     transformation: string;

@@ -11,6 +11,7 @@ export class IngestedDataService {
 
   constructor(private http: HttpClient) {}
 
+  //Service to upload your file
   uploadFile(file: File, categoryId: number): Observable<string> {
     const formData = new FormData();
     formData.append('file', file);
@@ -18,6 +19,7 @@ export class IngestedDataService {
     return this.http.post<string>(`${this.baseUrl}/filedata/upload`, formData);
   }
 
+  //Service to retrieve the file status
   findAllFiles(): Observable<IngestedFiles[]> {
     return this.http.get<IngestedFiles[]>(`${this.baseUrl}/filedata/files`);
   }

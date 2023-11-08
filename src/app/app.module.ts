@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { FileDetailsComponent } from './components/file-details/file-details.component';
 import { FormsModule } from '@angular/forms';
+import { IngestedDataService } from './service/ingested-data.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ // Include the FileUploadService in the providers array
+  providers: [ 
+    IngestedDataService
   ],
   bootstrap: [AppComponent],
 })

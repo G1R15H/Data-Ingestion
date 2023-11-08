@@ -7,8 +7,11 @@ import { Observable } from 'rxjs';
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.css']
 })
+
+//Component to upload the file
 export class FileUploadComponent implements OnInit {
   selectedFile: File | null = null;
+  //Note: For now the category ID is 1
   categoryId!: number;
   constructor(private ingestedDataService: IngestedDataService) { }
 
